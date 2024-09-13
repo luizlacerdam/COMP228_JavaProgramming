@@ -47,8 +47,41 @@ public class Singer {
   public void setNumberOfAlbumsPublished(int numberOfAlbumsPublished) {
     this.numberOfAlbumsPublished = numberOfAlbumsPublished;
   }
-
   public void setAllAttributes(int id, String name, String address, Date dateOfBirthday, int numberOfAlbumsPublished) {
+    this.id = id;
+    this.name = name;
+    this.address = address;
+    this.dateOfBirthday = dateOfBirthday;
+    this.numberOfAlbumsPublished = numberOfAlbumsPublished;
+  }
+
+  public Singer() {
+  }
+
+  public Singer(int id) {
+    this.id = id;
+  }
+
+  public Singer(int id, String name) {
+    this.id = id;
+    this.name = name;
+  }
+
+  public Singer(int id, String name, String address) {
+    this.id = id;
+    this.name = name;
+    this.address = address;
+  }
+
+  public Singer(int id, String name, String address, Date dateOfBirthday) {
+    this.id = id;
+    this.name = name;
+    this.address = address;
+    this.dateOfBirthday = dateOfBirthday;
+  }
+
+  public Singer(int id, String name, String address, Date dateOfBirthday,
+      int numberOfAlbumsPublished) {
     this.id = id;
     this.name = name;
     this.address = address;
