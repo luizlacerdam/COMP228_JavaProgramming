@@ -76,8 +76,8 @@ public class Test {
     return questions;
   }
 
-  public void checkAnswer() {
-
+  public boolean checkAnswer(Integer userAnswer, Integer questionAnswer) {
+    return userAnswer == questionAnswer;
   }
 
   public void generateMessage() {
@@ -91,13 +91,13 @@ public class Test {
     for (Integer question : questions.keySet()) {
       ArrayList<String> options = (ArrayList<String>) questions.get(question).get("options");
       String[] optionArray = options.toArray(new String[0]);
+      Integer questionAnswer = (Integer) questions.get(question).get("answer");
       Object userAnswer = JOptionPane.showInputDialog(null, questions.get(question).get("question"),
           "Question " + (questionNumber + 1), JOptionPane.QUESTION_MESSAGE, null, optionArray, optionArray[0]);
-      int selectedAnswer = options.indexOf(userAnswer);
-      System.out.println(selectedAnswer);
+      Integer selectedAnswer = options.indexOf(userAnswer);
+      System.out.println(checkAnswer(selectedAnswer, questionAnswer));
 
     }
-
   }
 
 }
