@@ -7,7 +7,8 @@ import javax.swing.JOptionPane;
 import java.util.Random;
 
 public class Test {
-
+  private int rightAnswers = 0;
+  private int wrongAnswers = 0;
   private Random randomObject = new Random();
 
   public Map<Integer, Map<String, Object>> simulateQuestion() {
@@ -132,8 +133,24 @@ public class Test {
       Object userAnswer = JOptionPane.showInputDialog(null, questions.get(question).get("question"),
           "Question " + (questionNumber + 1), JOptionPane.QUESTION_MESSAGE, null, optionArray, optionArray[0]);
       Integer selectedAnswer = options.indexOf(userAnswer);
+
       boolean isAnswerRight = checkAnswer(selectedAnswer, questionAnswer);
+      if (isAnswerRight){
+        rightAnswers += 1;
+      } else {
+        wrongAnswers += 1;
+      }
+
       JOptionPane.showMessageDialog(null,generateMessage(isAnswerRight));
+
     }
-  }
+    double percentageCorrect = (double) rightAnswers / (rightAnswers + wrongAnswers) * 100;
+      JOptionPane.showMessageDialog(null,
+          "The result is.\n" +
+          "Right Answers: " + rightAnswers +
+          "\nWrong Answers: " + wrongAnswers +
+              "\nPercentege corrected answers: " + percentageCorrect + "%"
+          );
+
+    }
 }
