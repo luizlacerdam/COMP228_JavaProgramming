@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import java.util.Random;
 
 public class Test {
 
-  public Map<Integer, Map<String, Object>> simulateQuestion() {
+  private Random randomObject = new Random();
 
+  public Map<Integer, Map<String, Object>> simulateQuestion() {
     Map<Integer, Map<String, Object>> questions = new HashMap<>();
 
     ArrayList<String> questionZeroOptions = new ArrayList<String>();
@@ -66,7 +68,6 @@ public class Test {
     questionFour.put("options", questionFourOptions );
     questionFour.put("answer", 3);
 
-
     questions.put(0, questionZero);
     questions.put(1, questionOne);
     questions.put(2, questionTwo);
@@ -80,9 +81,45 @@ public class Test {
     return userAnswer == questionAnswer;
   }
 
-  public void generateMessage() {
+  public String generateMessage(boolean gotTheRightAnswer) {
+    int randomIndex = randomObject.nextInt(4); // Generate a random number between 0 and 3
+    String message = "";
 
+    switch (randomIndex) {
+      case 0:
+        if (gotTheRightAnswer) {
+          message = "Excellent!";
+        } else {
+          message = "No. Please try again";
+        }
+        break;
+      case 1:
+        if (gotTheRightAnswer) {
+          message = "Good!";
+        } else {
+          message = "Wrong. Try once more";
+        }
+        break;
+      case 2:
+        if (gotTheRightAnswer) {
+          message = "Keep up the good work!";
+        } else {
+          message = "Don't give up!";
+        }
+        break;
+      case 3:
+        if (gotTheRightAnswer) {
+          message = "Nice work!";
+        } else {
+          message = "No. Keep trying..";
+        }
+        break;
+    }
+
+    return message;
   }
+
+
 
   public void inputAnswer() {
     Integer questionNumber = 0;
@@ -95,9 +132,8 @@ public class Test {
       Object userAnswer = JOptionPane.showInputDialog(null, questions.get(question).get("question"),
           "Question " + (questionNumber + 1), JOptionPane.QUESTION_MESSAGE, null, optionArray, optionArray[0]);
       Integer selectedAnswer = options.indexOf(userAnswer);
-      System.out.println(checkAnswer(selectedAnswer, questionAnswer));
-
+      boolean isAnswerRight = checkAnswer(selectedAnswer, questionAnswer);
+      JOptionPane.showMessageDialog(null,generateMessage(isAnswerRight));
     }
   }
-
 }
