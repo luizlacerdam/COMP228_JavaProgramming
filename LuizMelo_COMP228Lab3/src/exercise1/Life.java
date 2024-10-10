@@ -1,5 +1,7 @@
 package exercise1;
 
+import javax.swing.JOptionPane;
+
 public class Life extends Insurance {
   public Life() {
     this.insuranceType = "Life";
@@ -11,7 +13,6 @@ public class Life extends Insurance {
 
   @Override
   public void displayInfo() {
-    System.out.println("Insurance type: Life");
-    System.out.printf("Insurance monthly cost: %.2f%%\n", getMonthlyCost());
+    JOptionPane.showMessageDialog(null, String.format("Insurance type: Life. \nMonthly insurance cost is: $%.2f", getMonthlyCost()), "Insurance details", JOptionPane.INFORMATION_MESSAGE);
   }
 }
