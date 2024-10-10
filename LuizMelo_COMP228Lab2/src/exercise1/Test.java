@@ -12,7 +12,7 @@ public class Test {
   private Random randomObject = new Random();
 
   public Map<Integer, Map<String, Object>> simulateQuestion() {
-    Map<Integer, Map<String, Object>> questions = new HashMap<>();
+    Map<Integer, Map<String, Object>> questions = new HashMap<>(); // question will be returned
 
     ArrayList<String> questionZeroOptions = new ArrayList<String>();
     questionZeroOptions.add(0, "Java default constructor");
@@ -44,7 +44,7 @@ public class Test {
     questionFourOptions.add(2, "It must return a result exactly to the point from which it was called.");
     questionFourOptions.add(3, "It must return one result to the statement immediately after the method body."); // right answer
 
-    Map<String, Object> questionZero = new HashMap<>();
+    Map<String, Object> questionZero = new HashMap<>(); // Object  data type to take different data types
     questionZero.put("question", "Which of the following Java program units defines a group of related objects?");
     questionZero.put("options", questionZeroOptions );
     questionZero.put("answer", 3);
@@ -84,7 +84,7 @@ public class Test {
 
   public String generateMessage(boolean gotTheRightAnswer) {
     int randomIndex = randomObject.nextInt(4); // Generate a random number between 0 and 3
-    String message = "";
+    String message = ""; // it will return a random message depeding on the random number or if is correct (True) or incorrect (false)
 
     switch (randomIndex) {
       case 0:
@@ -120,19 +120,17 @@ public class Test {
     return message;
   }
 
-
-
   public void inputAnswer() {
     Integer questionNumber = 0;
-    Map<Integer, Map<String, Object>> questions = simulateQuestion();
-
-    for (Integer question : questions.keySet()) {
-      ArrayList<String> options = (ArrayList<String>) questions.get(question).get("options");
-      String[] optionArray = options.toArray(new String[0]);
-      Integer questionAnswer = (Integer) questions.get(question).get("answer");
+    Map<Integer, Map<String, Object>> questions = simulateQuestion(); // executing simulateQuestion to get the questions HashMap
+    for (Integer question : questions.keySet()) { // for each question in questions
+      ArrayList<String> options = (ArrayList<String>) questions.get(question).get("options"); // getting options of the question
+      String[] optionArray = options.toArray(new String[0]); // putting it in array
+      Integer questionAnswer = (Integer) questions.get(question).get("answer"); // type casting the index of the question answer
       Object userAnswer = JOptionPane.showInputDialog(null, questions.get(question).get("question"),
           "Question " + (questionNumber + 1), JOptionPane.QUESTION_MESSAGE, null, optionArray, optionArray[0]);
-      Integer selectedAnswer = options.indexOf(userAnswer);
+
+      Integer selectedAnswer = options.indexOf(userAnswer); // finding out what the index of the answer from the options
 
       boolean isAnswerRight = checkAnswer(selectedAnswer, questionAnswer);
       if (isAnswerRight){

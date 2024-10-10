@@ -9,7 +9,7 @@ public class Lotto {
   // random 1 to 9
   public Lotto() {
     for (Integer i = 0; i < numbersArr.length; i++) {
-      numbersArr[i] = random.nextInt(9) + 1;
+      numbersArr[i] = random.nextInt(9) + 1; // insert the random number 1 - 9 in the array
     }
   }
 
