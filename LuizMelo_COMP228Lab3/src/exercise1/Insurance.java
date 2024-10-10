@@ -1,8 +1,8 @@
 package exercise1;
 
 public abstract class Insurance {
-  private String insuranceType;
-  private double monthlyCost;
+  protected String insuranceType;
+  protected double monthlyCost;
 
   public String getInsuranceType() {
     return insuranceType;
