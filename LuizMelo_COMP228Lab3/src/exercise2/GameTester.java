@@ -9,5 +9,5 @@ public abstract class GameTester {
     this.name = name;
     this.fulltime = fulltime;
   }
-  public abstract void salary();
+  public abstract double salary();
 }
