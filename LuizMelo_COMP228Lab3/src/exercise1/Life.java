@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Life extends Insurance {
   public Life() {
-    this.insuranceType = "Life";
+    this.insuranceType = "Life Insurance";
   }
   @Override
   public void setInsuranceCost(double cost) {
