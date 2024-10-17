@@ -1,38 +1,40 @@
 package exercise2;
 
-import java.util.Scanner;
+import javax.swing.*;
 
 public class Main {
-  public static void main(String[] main) {
-    Scanner scanner = new Scanner(System.in);
+  public static void main(String[] args) {
+    String name = JOptionPane.showInputDialog("Enter the name of the game tester:");
 
-    System.out.println("Enter the name of the game tester:");
-    String name = scanner.nextLine();
-
-    System.out.println("Choose the type of game tester:");
-    System.out.println("1. Full-Time");
-    System.out.println("2. Part-Time");
-    int choice = scanner.nextInt();
+    String[] options = {"Full-Time", "Part-Time"};
+    int choice = JOptionPane.showOptionDialog(null,
+        "Choose the type of game tester:",
+        "Game Tester Type",
+        JOptionPane.DEFAULT_OPTION,
+        JOptionPane.INFORMATION_MESSAGE,
+        null, options, options[0]);
 
     GameTester tester = null;
 
-    if (choice == 1) {
+    if (choice == 0) {
       tester = new FullTimeGameTester(name);
-    } else if (choice == 2) {
-      System.out.println("Enter the number of hours worked:");
-      int hoursWorked = scanner.nextInt();
+    }
+    else if (choice == 1) {
+      String hoursWorkedStr = JOptionPane.showInputDialog("Enter the number of hours worked:");
+      int hoursWorked = Integer.parseInt(hoursWorkedStr);
       tester = new PartTimeGameTester(name, hoursWorked);
     } else {
-      System.out.println("Invalid option.");
+      JOptionPane.showMessageDialog(null, "Invalid option.");
       System.exit(0);
     }
 
-    System.out.println("\nGame Tester Information:");
-    System.out.println("Name: " + tester.name);
-    System.out.println("Employment Type: " + (tester.fulltime ? "Full-Time" : "Part-Time"));
-    System.out.println("Salary: $" + tester.salary());
+    String testerInfo = "Game Tester Information:\n" +
+        "Name: " + tester.name + "\n" +
+        "Employment Type: " + (tester.fulltime ? "Full-Time" : "Part-Time") + "\n" +
+        "Salary: $" + tester.salary();
 
+    JOptionPane.showMessageDialog(null, testerInfo);
 
-    scanner.close();
+    System.exit(0);  // Exit the program
   }
 }
