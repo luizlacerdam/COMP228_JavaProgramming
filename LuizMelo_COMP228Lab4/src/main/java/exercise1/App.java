@@ -2,6 +2,7 @@ package exercise1;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
@@ -27,6 +28,12 @@ public class App extends Application {
     form.setHgap(10);
     form.setVgap(10);
     form.setPadding(new Insets(10));
+
+    for (int i = 0; i < 7; i++) {
+      RowConstraints row = new RowConstraints();
+      row.setMinHeight(40);
+      form.getRowConstraints().add(row);
+    }
 
     Label nameLabel = new Label("Name:");
     TextField nameField = new TextField();
@@ -56,6 +63,7 @@ public class App extends Application {
 
     ComboBox<String> courseComboBox = new ComboBox<>();
     ListView<String> courseList = new ListView<>();
+    courseList.setPrefHeight(150);
 
     csButton.setOnAction(e -> {
       courseComboBox.getItems().clear();
@@ -93,7 +101,8 @@ public class App extends Application {
     form.add(studentCouncilBox, 2, 1);
     form.add(majorBox, 3, 0);
     form.add(volunteerWorkBox, 2, 5);
-    form.add(courseBox, 3, 1, 3, 1);
+
+    form.add(courseBox, 3, 1, 1, 6);
 
     TextArea displayArea = new TextArea();
     displayArea.setEditable(false);
@@ -125,7 +134,11 @@ public class App extends Application {
       displayArea.setText(info.toString());
     });
 
-    VBox displayBox = new VBox(10, displayButton, displayArea);
+    HBox buttonBox = new HBox(displayButton);
+    buttonBox.setAlignment(Pos.CENTER); // Center the button horizontally
+    buttonBox.setPadding(new Insets(10));
+
+    VBox displayBox = new VBox(10, buttonBox, displayArea);
     displayBox.setPadding(new Insets(10));
 
     root.setCenter(form);
