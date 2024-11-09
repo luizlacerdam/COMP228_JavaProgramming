@@ -106,6 +106,16 @@ public class App extends Application {
 
     TextArea displayArea = new TextArea();
     displayArea.setEditable(false);
+    displayArea.setWrapText(false);
+
+    // Make the TextArea much larger than the ScrollPane to enable scrolling
+    displayArea.setPrefSize(1200, 800);
+
+    ScrollPane scrollPane = new ScrollPane(displayArea);
+    scrollPane.setPrefHeight(200); // Limit the viewport height
+    scrollPane.setPrefWidth(600); // Limit the viewport width
+    scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+    scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
     Button displayButton = new Button("Display");
     displayButton.setOnAction(e -> {
@@ -135,10 +145,10 @@ public class App extends Application {
     });
 
     HBox buttonBox = new HBox(displayButton);
-    buttonBox.setAlignment(Pos.CENTER); // Center the button horizontally
+    buttonBox.setAlignment(Pos.CENTER);
     buttonBox.setPadding(new Insets(10));
 
-    VBox displayBox = new VBox(10, buttonBox, displayArea);
+    VBox displayBox = new VBox(10, buttonBox, scrollPane);
     displayBox.setPadding(new Insets(10));
 
     root.setCenter(form);
