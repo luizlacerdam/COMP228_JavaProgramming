@@ -112,8 +112,8 @@ public class App extends Application {
     displayArea.setPrefSize(1200, 800);
 
     ScrollPane scrollPane = new ScrollPane(displayArea);
-    scrollPane.setPrefHeight(200); // Limit the viewport height
-    scrollPane.setPrefWidth(600); // Limit the viewport width
+    scrollPane.setPrefHeight(200);
+    scrollPane.setPrefWidth(600);
     scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
     scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 
@@ -154,7 +154,7 @@ public class App extends Application {
     root.setCenter(form);
     root.setBottom(displayBox);
 
-    primaryStage.setScene(new Scene(root, 800, 600));
+    primaryStage.setScene(new Scene(root, 800, 800));
     primaryStage.show();
   }
 }
