@@ -15,6 +15,7 @@ public class Main {
       tabbedPane.addTab("Insert Players", InsertPlayerTab.createInsertPlayerTab());
       tabbedPane.addTab("Insert Games", InsertGameTab.createInsertGameTab());
       tabbedPane.addTab("Insert Player and Game", InsertPlayerAndGameTab.createInsertPlayerAndGameTab());
+      tabbedPane.addTab("Update Player", UpdatePlayerTab.createUpdatePlayerTab());
 
       frame.add(tabbedPane, BorderLayout.CENTER);
       frame.setVisible(true);
