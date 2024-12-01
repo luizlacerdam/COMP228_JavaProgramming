@@ -1,34 +1,21 @@
 package exercise1;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.swing.*;
+import java.awt.*;
 
 public class Main {
   public static void main(String[] args) {
-    try (Connection connection = DatabaseConnection.getConnection()) {
-      if (connection != null) {
-        System.out.println("Connection to Oracle database established successfully.");
+    SwingUtilities.invokeLater(() -> {
+      JFrame frame = new JFrame("Game Player Application");
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.setSize(600, 500);
+      frame.setLayout(new BorderLayout());
 
-        // Example SELECT query
-        String query = "SELECT * FROM Game";
+      JTabbedPane tabbedPane = new JTabbedPane();
+      tabbedPane.addTab("Insert", InsertPlayerTab.createInsertPlayerTab());
 
-        // Execute the query
-        try (Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(query)) {
-
-          // Process the results
-          while (resultSet.next()) {
-            int gameId = resultSet.getInt("game_id");
-            String gameTitle = resultSet.getString("game_title");
-            System.out.printf("Game ID: %d, Game Title: %s%n", gameId, gameTitle);
-          }
-        }
-      }
-    } catch (SQLException e) {
-      System.err.println("Failed to connect to Oracle database or execute query.");
-      e.printStackTrace();
-    }
+      frame.add(tabbedPane, BorderLayout.CENTER);
+      frame.setVisible(true);
+    });
   }
 }
