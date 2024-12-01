@@ -14,6 +14,7 @@ public class Main {
       JTabbedPane tabbedPane = new JTabbedPane();
       tabbedPane.addTab("Insert Players", InsertPlayerTab.createInsertPlayerTab());
       tabbedPane.addTab("Insert Games", InsertGameTab.createInsertGameTab());
+      tabbedPane.addTab("Insert Player and Game", InsertPlayerAndGameTab.createInsertPlayerAndGameTab());
 
       frame.add(tabbedPane, BorderLayout.CENTER);
       frame.setVisible(true);
