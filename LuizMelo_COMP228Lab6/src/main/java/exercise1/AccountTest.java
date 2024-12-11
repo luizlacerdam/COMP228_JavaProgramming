@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class Main {
+public class AccountTest {
   public static void main(String[] args) {
-    Account account = new Account(1000.0); // Initial balance
+    Account account = new Account(1000.0);
 
     // Create a list of transactions
     ArrayList<Transaction> transactions = new ArrayList<>();
