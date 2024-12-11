@@ -4,9 +4,7 @@ public class Account {
   private double balance;
 
   public Account(double initialBalance) {
-    if (initialBalance > 0.0) {
       this.balance = initialBalance;
-    }
   }
 
   public synchronized void deposit(double amount) {

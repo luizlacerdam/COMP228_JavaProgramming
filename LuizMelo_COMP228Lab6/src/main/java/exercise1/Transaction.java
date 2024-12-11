@@ -1,6 +1,6 @@
 package exercise1;
 
-public class Transaction implements Runnable {
+public class Transaction implements Runnable { // Runnable interface, allowing it to be executed by a thread.
   private final Account account;
   private final double amount;
   private final String transactionType;
